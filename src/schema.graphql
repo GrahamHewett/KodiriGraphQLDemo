@@ -2,12 +2,19 @@ type Query {
   bye: String
   hello: String
   users: [User!]!
-  user(id: Int!): User!
+  user(id: ID!): User
+  # user(name: String!): User
 }
 
 type User {
-  id: Int!
+  id: ID!
   name: String!
   email: String!
   age: Int
+}
+
+type Mutation {
+  createUser(id: ID!, name: String!, email: String!, age: Int): User!
+  updateUser(id: ID!, name: String, email: String, age: Int): User!
+  deleteUser(id: ID!): User!
 }
